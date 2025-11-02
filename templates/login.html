@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Login - Gesture Volume Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="login-wrap">
+    <div class="login-card">
+      <h2>Gesture Volume Dashboard</h2>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for cat, msg in messages %}
+            <div class="notice {{ cat }}">{{ msg }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+      <form method="POST" action="{{ url_for('login') }}">
+        <input name="username" placeholder="Username" required />
+        <input name="password" placeholder="Password" type="password" required />
+        <button type="submit" class="primary">Login</button>
+      </form>
+      <p style="margin-top:8px">No account? <a href="{{ url_for('register') }}">Register here</a></p>
+      <p style="font-size:0.9rem; color:#9bd;">Hint: admin / 1234</p>
+    </div>
+  </div>
+</body>
+</html>

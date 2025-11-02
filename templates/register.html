@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Register - Gesture Volume Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="login-wrap">
+    <div class="login-card">
+      <h2>Create Account</h2>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for cat, msg in messages %}
+            <div class="notice {{ cat }}">{{ msg }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+      <form method="POST" action="{{ url_for('register') }}">
+        <input name="username" placeholder="Username" required />
+        <input name="email" placeholder="Email" type="email" required />
+        <input name="password" placeholder="Password" type="password" required />
+        <button type="submit" class="primary">Register</button>
+      </form>
+      <p style="margin-top:8px">Already registered? <a href="{{ url_for('login') }}">Login</a></p>
+    </div>
+  </div>
+</body>
+</html>

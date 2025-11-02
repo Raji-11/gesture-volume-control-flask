@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Gesture Volume Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="brand">Gesture Volume Dashboard</div>
+    <div class="right">
+      <a class="btn-logout" href="{{ url_for('logout') }}">Logout</a>
+    </div>
+  </nav>
+
+  <div class="container-full">
+    <div class="left-large">
+      <div class="video-frame">
+        <img id="videoFeed" src="{{ url_for('video_feed') }}" alt="Live feed">
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <h3>Live Stats <span class="session-tag">Session live</span></h3>
+
+      <div class="metrics-grid">
+        <div class="metric">
+          <div class="label">Volume</div>
+          <div id="volume" class="value">0%</div>
+        </div>
+        <div class="metric">
+          <div class="label">Finger Distance</div>
+          <div id="distance" class="value">0 px</div>
+        </div>
+        <div class="metric">
+          <div class="label">Accuracy</div>
+          <div id="accuracy" class="value">0%</div>
+        </div>
+        <div class="metric">
+          <div class="label">Response Time</div>
+          <div id="response" class="value">0 ms</div>
+        </div>
+      </div>
+
+      <div class="gesture-box">
+        <div class="g-label">Gesture</div>
+        <div id="gesture" class="g-value">Closed</div>
+      </div>
+
+      <div class="controls">
+        <button class="btn start" id="startBtn">Start</button>
+        <button class="btn stop" id="stopBtn">Stop</button>
+        <button class="btn save" id="saveBtn">Save Session</button>
+      </div>
+
+      <div class="chart-area">
+        <h4>Live Volume vs Distance (last seconds)</h4>
+        <canvas id="volumeChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
